@@ -501,6 +501,44 @@
     font-style:italic;
   }
 
+  /* INSTITUTIONAL CALLOUT */
+
+  .institutional-callout{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 5rem;
+    padding:2.4rem 2rem;
+    border-top:1px solid var(--hair);
+    border-bottom:1px solid var(--hair);
+  }
+
+  .institutional-callout p{
+    color:var(--espresso-soft);
+  }
+
+  .institutional-callout .cta-link{
+    color:var(--clay);
+    border-bottom:1px solid var(--clay);
+    padding-bottom:1px;
+    transition:opacity .3s;
+  }
+
+  .institutional-callout .cta-link:hover{
+    opacity:0.65;
+  }
+
+  .institutional-callout .contact-line{
+    margin-top:1rem;
+    font-family:'Jost', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    color:var(--espresso-soft);
+  }
+
+  .institutional-callout .contact-line a{
+    color:var(--clay);
+  }
+
   /* PROCESS */
 
   .process{
@@ -786,6 +824,22 @@
     margin-bottom:1.3rem;
   }
 
+  .b2b .contact-details{
+    margin-top:1.8rem;
+    font-family:'Jost', sans-serif;
+    font-size:0.78rem;
+    letter-spacing:0.03em;
+    color:rgba(251,251,249,0.68);
+  }
+
+  .b2b .contact-details a{
+    color:var(--clay);
+  }
+
+  .b2b .contact-details div{
+    margin-bottom:0.5rem;
+  }
+
   form{
     display:grid;
     gap:1.8rem;
@@ -864,12 +918,26 @@
     color:var(--espresso);
   }
 
+  .submit-btn:disabled{
+    opacity:0.5;
+    cursor:not-allowed;
+  }
+
   .form-success{
     display:none;
     font-family:'Cormorant Garamond', serif;
     font-style:italic;
     font-size:1.2rem;
     color:var(--clay);
+    margin-top:0.6rem;
+  }
+
+  .form-error{
+    display:none;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.05rem;
+    color:#e0a05c;
     margin-top:0.6rem;
   }
 
@@ -885,6 +953,23 @@
     letter-spacing:0.32em;
     text-transform:uppercase;
     color:rgba(251,251,249,0.45);
+  }
+
+  footer .footer-contact{
+    font-family:'Jost', sans-serif;
+    font-size:0.74rem;
+    letter-spacing:0.04em;
+    color:rgba(251,251,249,0.6);
+    margin-bottom:1.4rem;
+  }
+
+  footer .footer-contact a{
+    color:var(--clay);
+  }
+
+  footer .footer-contact span{
+    margin:0 0.6rem;
+    color:rgba(251,251,249,0.3);
   }
 
   @media (prefers-reduced-motion:reduce){
@@ -1168,6 +1253,23 @@
 
           </div>
 
+        </div>
+
+      </div>
+
+
+      <!-- INSTITUTIONAL / CUSTOM ORDER CALLOUT -->
+
+      <div class="institutional-callout reveal">
+
+        <p>
+          Looking to bring these notebooks to your institution? We offer institutional and customised orders — notebooks made from diverted textile waste, ideal for conferences, corporate gifting, and academic programs. To enquire, <a class="cta-link" href="#b2b">contact us</a>.
+        </p>
+
+        <div class="contact-line">
+          <a href="mailto:infodaffodilstudio@gmail.com">infodaffodilstudio@gmail.com</a>
+          &nbsp;·&nbsp;
+          <a href="tel:+17654792860">+1 765 4792860</a>
         </div>
 
       </div>
@@ -1942,10 +2044,27 @@
         Tell us what you're building, and we'll bring Jaipur's ateliers to the table.
       </p>
 
+      <div class="contact-details">
+        <div>Email: <a href="mailto:infodaffodilstudio@gmail.com">infodaffodilstudio@gmail.com</a></div>
+        <div>Phone: <a href="tel:+17654792860">+1 765 4792860</a></div>
+      </div>
+
     </div>
 
 
-    <form id="b2b-form">
+    <form
+      id="b2b-form"
+      name="b2b-inquiry"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+
+      <input type="hidden" name="form-name" value="b2b-inquiry">
+
+      <p style="display:none;">
+        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+      </p>
 
       <div class="form-row">
 
@@ -1958,6 +2077,7 @@
           <input
             type="text"
             id="name"
+            name="name"
             required
           >
 
@@ -1973,6 +2093,7 @@
           <input
             type="text"
             id="company"
+            name="company"
           >
 
         </div>
@@ -1991,6 +2112,7 @@
           <input
             type="email"
             id="email"
+            name="email"
             required
           >
 
@@ -2003,7 +2125,7 @@
             Inquiry Type
           </label>
 
-          <select id="inquiry">
+          <select id="inquiry" name="inquiry">
 
             <option>
               Curated Collection Order
@@ -2034,7 +2156,7 @@
           Tell us about your project
         </label>
 
-        <textarea id="message"></textarea>
+        <textarea id="message" name="message"></textarea>
 
       </div>
 
@@ -2054,6 +2176,13 @@
         Thank you — your inquiry has been received. We'll be in touch soon.
       </div>
 
+      <div
+        class="form-error"
+        id="form-error"
+      >
+        Something went wrong sending your inquiry. Please try again, or email us directly.
+      </div>
+
     </form>
 
   </div>
@@ -2062,6 +2191,12 @@
 
 
 <footer>
+
+  <div class="footer-contact">
+    <a href="mailto:infodaffodilstudio@gmail.com">infodaffodilstudio@gmail.com</a>
+    <span>&middot;</span>
+    <a href="tel:+17654792860">+1 765 4792860</a>
+  </div>
 
   <div class="made">
     Handcrafted in Jaipur, India
@@ -2191,22 +2326,56 @@ tabBtns.forEach(btn => {
 
 
 /* =========================================================
-   B2B FORM
+   B2B FORM — NETLIFY SUBMISSION
+
+   The previous version only called e.preventDefault() and
+   showed the success message, but never actually sent the
+   data anywhere — so nothing was ever stored.
+
+   Netlify Forms need the submission POSTed (as
+   application/x-www-form-urlencoded) to the page itself.
+   This does that via fetch, then shows your success message
+   only once Netlify confirms it received it.
    ========================================================= */
 
-document
-  .getElementById('b2b-form')
-  .addEventListener('submit', function(e) {
+function encodeFormData(form) {
 
-    e.preventDefault();
+  const data = new FormData(form);
 
-    document
-      .getElementById('form-success')
-      .style.display = 'block';
+  return new URLSearchParams(data).toString();
 
-    this.reset();
+}
 
-  });
+const b2bForm = document.getElementById('b2b-form');
+const successMsg = document.getElementById('form-success');
+const errorMsg = document.getElementById('form-error');
+const submitBtn = b2bForm.querySelector('.submit-btn');
+
+b2bForm.addEventListener('submit', function(e) {
+
+  e.preventDefault();
+
+  successMsg.style.display = 'none';
+  errorMsg.style.display = 'none';
+  submitBtn.disabled = true;
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encodeFormData(b2bForm)
+  })
+    .then(() => {
+      successMsg.style.display = 'block';
+      b2bForm.reset();
+    })
+    .catch(() => {
+      errorMsg.style.display = 'block';
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+    });
+
+});
 
 
 /* =========================================================
