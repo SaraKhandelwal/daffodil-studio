@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,7 +88,7 @@
 
   .world-story{ display:grid; grid-template-columns: 1fr 1fr; gap:5vw; align-items:center; margin: 4rem 0 5rem; }
   @media (max-width:900px){ .world-story{ grid-template-columns:1fr; } }
-  .world-story .img-ph{ aspect-ratio:5/4; background:var(--sand); position:relative; }
+  .world-story .img-ph{ aspect-ratio:5/4; background:var(--sand); position:relative; overflow:hidden; }
   .world-story .img-ph .ph{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem; font-family:'Jost', sans-serif; font-size:0.68rem; color:var(--espresso-soft); opacity:0.5; }
   .world-story p{ color:var(--espresso-soft); margin-bottom:1.3rem; max-width:48ch; }
   .world-story p strong{ color:var(--espresso); font-weight:500; font-style:italic; }
@@ -99,7 +100,7 @@
   .process-head h3{ font-size:1.6rem; font-style:italic; }
   .process-body{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap:4vw; align-items:center; }
   @media (max-width:900px){ .process-body{ grid-template-columns:1fr; } }
-  .process-body .img-ph{ aspect-ratio:16/11; background:var(--bone-warm); position:relative; order:2; }
+  .process-body .img-ph{ aspect-ratio:16/11; background:var(--bone-warm); position:relative; order:2; overflow:hidden; }
   @media (max-width:900px){ .process-body .img-ph{ order:0; } }
   .process-body .img-ph .ph{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:1.6rem; font-family:'Jost', sans-serif; font-size:0.66rem; color:var(--espresso-soft); opacity:0.5; }
   .process-body p{ color:var(--espresso-soft); }
@@ -129,7 +130,7 @@
   .artists{ background:var(--bone-warm); }
   .artists-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap: 3.5rem; margin-top:4rem; }
   @media (max-width:800px){ .artists-grid{ grid-template-columns:1fr; max-width:420px; margin-left:auto; margin-right:auto; } }
-  .artist .img-ph{ aspect-ratio:4/5; background:var(--sand); position:relative; margin-bottom:1.4rem; }
+  .artist .img-ph{ aspect-ratio:4/5; background:var(--sand); position:relative; margin-bottom:1.4rem; overflow:hidden; }
   .artist .img-ph .ph{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:1.6rem; font-family:'Jost', sans-serif; font-size:0.64rem; color:var(--espresso-soft); opacity:0.5; }
   .artist h4{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.35rem; font-weight:500; }
   .artist .craft{ font-family:'Jost', sans-serif; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--clay); margin: 0.4rem 0 0.8rem; }
@@ -186,8 +187,12 @@
 <section class="founder">
   <div class="container founder-grid reveal">
     <div>
-      <div class="img-ph"><div class="founder-portrait"><img src="images/founder-sara.jpg" alt="Sara Khandelwal, Founder of Daffodil Studio"></div></div>      <div class="founder-cap">Sara Khandelwal, Founder — photographed in Jaipur</div>
+      <div class="founder-portrait">
+        <img src="images/founder-sara.jpg" alt="Sara Khandelwal, Founder of Daffodil Studio">
+      </div>
+      <div class="founder-cap">Sara Khandelwal, Founder — photographed in Jaipur</div>
     </div>
+
     <div class="founder-text">
       <span class="label">Who We Are</span>
       <h2>A small studio, and the many hands behind it.</h2>
@@ -223,10 +228,13 @@
 
     <!-- STATIONERY -->
     <div class="world-panel active" id="panel-stationery">
+
       <div class="world-story reveal">
-<div class="img-ph">
-    <img src="images/stationery-story-1.jpg" alt="Circular stationery made from reclaimed cotton">
-</div>      <div>
+        <div class="img-ph">
+          <img src="images/stationery-story-1.jpg" alt="Circular stationery made from reclaimed cotton">
+        </div>
+
+        <div>
           <p><strong>Paper with a soul, and a second life.</strong></p>
           <p>Every year, textile production leaves behind enormous amounts of material offcuts, remnants, and fibers that have already been through one production cycle.We work with cotton textile waste and remnants, redirecting this material into a new form: paper.</p>
           <p>Instead of allowing textile material to end its useful life as waste, we give it another purpose as stationery designed for everyday use.</p>
@@ -235,21 +243,57 @@
 
       <div class="obj-line reveal">
         <div class="obj-line-head"><span class="num">World I / No. 01</span><h3>Notebooks</h3><div class="rule"></div></div>
+
         <div class="obj-grid">
-          <div class="obj"><div class="img-ph"><div class="ph">images/notebooks-var1.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Heritage Journal</span><span class="code">DS · ST · 101</span></div></div>
-          <div class="obj"><div class="img-ph"><div class="ph">images/notebooks-var2.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Minimalist Sketchbook</span><span class="code">DS · ST · 102</span></div></div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/notebooks-var1.jpg" alt="The Heritage Journal">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Heritage Journal</span>
+              <span class="code">DS · ST · 101</span>
+            </div>
+          </div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/notebooks-var2.jpg" alt="The Minimalist Sketchbook">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Minimalist Sketchbook</span>
+              <span class="code">DS · ST · 102</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <div class="obj-line reveal">
         <div class="obj-line-head"><span class="num">World I / No. 02</span><h3>Photo Frames</h3><div class="rule"></div></div>
+
         <div class="obj-grid">
-          <div class="obj"><div class="img-ph"><div class="ph">images/frames-var1.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Alabaster Border</span><span class="code">DS · ST · 201</span></div></div>
-          <div class="obj"><div class="img-ph"><div class="ph">images/frames-var2.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Textured Cotton Mat</span><span class="code">DS · ST · 202</span></div></div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/frames-var1.jpg" alt="The Alabaster Border">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Alabaster Border</span>
+              <span class="code">DS · ST · 201</span>
+            </div>
+          </div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/frames-var2.jpg" alt="The Textured Cotton Mat">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Textured Cotton Mat</span>
+              <span class="code">DS · ST · 202</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -260,8 +304,12 @@
 
     <!-- TEXTILES -->
     <div class="world-panel" id="panel-textiles">
+
       <div class="world-story reveal">
-        <div class="img-ph"><div class="ph">images/textiles-story-1.jpg</div></div>
+        <div class="img-ph">
+          <img src="images/textiles-story-1.jpg" alt="Artistic textiles and handcrafted textile work">
+        </div>
+
         <div>
           <p><strong>History, woven and stamped into cloth.</strong></p>
           <p>Kantha is a textile carrying stories from generations, a canvas that literalizes history, one hand-laid stitch at a time, passed from grandmother to daughter across seasons of quiet work.</p>
@@ -271,79 +319,202 @@
 
       <!-- PROCESS: KANTHA -->
       <div class="process reveal">
-        <div class="process-head"><span class="label">The Process</span><h3>Kantha, Stitch by Stitch</h3></div>
+        <div class="process-head">
+          <span class="label">The Process</span>
+          <h3>Kantha, Stitch by Stitch</h3>
+        </div>
+
         <div class="process-body">
           <p>Layers of worn, gathered cloth are laid flat and stitched by hand in fine, running lines - the same technique women in Bengal have used for generations to turn old saris into something new. There is no pattern drawn beforehand; the maker's hand decides as she goes, so no two pieces of Kantha are ever quite the same.</p>
-          <div class="img-ph"><div class="ph">images/process-kantha-1.jpg</div></div>
+
+          <div class="img-ph">
+            <img src="images/process-kantha-1.jpg" alt="Kantha stitching process">
+          </div>
         </div>
       </div>
 
       <div class="obj-line reveal">
         <div class="obj-line-head"><span class="num">World II / No. 01</span><h3>Kantha Jackets</h3><div class="rule"></div></div>
+
         <div class="obj-grid">
-          <div class="obj"><div class="img-ph"><div class="ph">images/kantha-jacket-var1.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Heirloom Quilted Jacket</span><span class="code">DS · TX · 101</span></div></div>
-          <div class="obj"><div class="img-ph"><div class="ph">images/kantha-jacket-var2.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Layered Field Jacket</span><span class="code">DS · TX · 102</span></div></div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/kantha-jacket-var1.jpg" alt="The Heirloom Quilted Jacket">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Heirloom Quilted Jacket</span>
+              <span class="code">DS · TX · 101</span>
+            </div>
+          </div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/kantha-jacket-var2.jpg" alt="The Layered Field Jacket">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Layered Field Jacket</span>
+              <span class="code">DS · TX · 102</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <div class="obj-line reveal">
         <div class="obj-line-head"><span class="num">World II / No. 02</span><h3>Kantha Bags</h3><div class="rule"></div></div>
+
         <div class="obj-grid">
-          <div class="obj"><div class="img-ph"><div class="ph">images/kantha-bag-var1.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Generational Tote</span><span class="code">DS · TX · 103</span></div></div>
-          <div class="obj"><div class="img-ph"><div class="ph">images/kantha-bag-var2.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Stitched Satchel</span><span class="code">DS · TX · 104</span></div></div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/kantha-bag-var1.jpg" alt="The Generational Tote">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Generational Tote</span>
+              <span class="code">DS · TX · 103</span>
+            </div>
+          </div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/kantha-bag-var2.jpg" alt="The Stitched Satchel">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Stitched Satchel</span>
+              <span class="code">DS · TX · 104</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <!-- PROCESS: BLOCK PRINT -->
       <div class="process reveal">
-        <div class="process-head"><span class="label">The Process</span><h3>Block Print, Pressed by Hand</h3></div>
+        <div class="process-head">
+          <span class="label">The Process</span>
+          <h3>Block Print, Pressed by Hand</h3>
+        </div>
+
         <div class="process-body">
-          <div class="img-ph"><div class="ph">images/process-blockprint-1.jpg</div></div>
+
+          <div class="img-ph">
+            <img src="images/process-blockprint-1.jpg" alt="Hand block printing process">
+          </div>
+
           <p>A motif begins as a hand-carved wood block, sometimes decades old, passed between printers as an inheritance of skill. Dipped in natural, botanical dye and pressed onto cloth stamp by stamp, the pattern takes shape slowly, a discipline of rhythm and pressure that no machine has managed to replicate.</p>
+
         </div>
       </div>
 
       <div class="obj-line reveal">
         <div class="obj-line-head"><span class="num">World II / No. 03</span><h3>Block Print Jackets</h3><div class="rule"></div></div>
+
         <div class="obj-grid">
-          <div class="obj"><div class="img-ph"><div class="ph">images/blockprint-jacket-var1.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Meticulous Print Kimono</span><span class="code">DS · TX · 201</span></div></div>
-          <div class="obj"><div class="img-ph"><div class="ph">images/blockprint-jacket-var2.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Quilted Motif Jacket</span><span class="code">DS · TX · 202</span></div></div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/blockprint-jacket-var1.jpg" alt="The Meticulous Print Kimono">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Meticulous Print Kimono</span>
+              <span class="code">DS · TX · 201</span>
+            </div>
+          </div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/blockprint-jacket-var2.jpg" alt="The Quilted Motif Jacket">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Quilted Motif Jacket</span>
+              <span class="code">DS · TX · 202</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <div class="obj-line reveal">
         <div class="obj-line-head"><span class="num">World II / No. 04</span><h3>Block Print Bags</h3><div class="rule"></div></div>
+
         <div class="obj-grid four">
-          <div class="obj"><div class="img-ph"><div class="ph">images/blockprint-bag-var1.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Indigo Motif Satchel</span><span class="code">DS · TX · 203</span></div></div>
-          <div class="obj"><div class="img-ph"><div class="ph">images/blockprint-bag-var2.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Everyday Tote</span><span class="code">DS · TX · 204</span></div></div>
-          <div class="obj"><div class="img-ph"><div class="ph">images/blockprint-bag-var3.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Jacquard Weave Bag</span><span class="code">DS · TX · 205</span></div></div>
-          <div class="obj"><div class="img-ph"><div class="ph">images/blockprint-bag-var4.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Folded Pouch</span><span class="code">DS · TX · 206</span></div></div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/blockprint-bag-var1.jpg" alt="The Indigo Motif Satchel">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Indigo Motif Satchel</span>
+              <span class="code">DS · TX · 203</span>
+            </div>
+          </div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/blockprint-bag-var2.jpg" alt="The Everyday Tote">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Everyday Tote</span>
+              <span class="code">DS · TX · 204</span>
+            </div>
+          </div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/blockprint-bag-var3.jpg" alt="The Jacquard Weave Bag">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Jacquard Weave Bag</span>
+              <span class="code">DS · TX · 205</span>
+            </div>
+          </div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/blockprint-bag-var4.jpg" alt="The Folded Pouch">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Folded Pouch</span>
+              <span class="code">DS · TX · 206</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <div class="obj-line reveal">
         <div class="obj-line-head"><span class="num">World II / No. 05</span><h3>Block Print Apparel</h3><div class="rule"></div></div>
+
         <div class="obj-grid">
-          <div class="obj"><div class="img-ph"><div class="ph">images/blockprint-apparel-var1.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Printed Wrap Dress</span><span class="code">DS · TX · 207</span></div></div>
-          <div class="obj"><div class="img-ph"><div class="ph">images/blockprint-apparel-var2.jpg</div></div>
-            <div class="obj-cap"><span class="name">The Loose Weave Set</span><span class="code">DS · TX · 208</span></div></div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/blockprint-apparel-var1.jpg" alt="The Printed Wrap Dress">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Printed Wrap Dress</span>
+              <span class="code">DS · TX · 207</span>
+            </div>
+          </div>
+
+          <div class="obj">
+            <div class="img-ph">
+              <img src="images/blockprint-apparel-var2.jpg" alt="The Loose Weave Set">
+            </div>
+            <div class="obj-cap">
+              <span class="name">The Loose Weave Set</span>
+              <span class="code">DS · TX · 208</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <div class="see-all reveal">
         <p>To see our whole collection, <a href="#b2b">email us or send an inquiry</a>.</p>
       </div>
+
     </div>
   </div>
 </section>
@@ -351,29 +522,41 @@
 <!-- MEET OUR ARTISTS -->
 <section class="artists">
   <div class="container">
+
     <div class="worlds-head reveal">
       <span class="label">Behind Every Piece</span>
       <h2>Meet Our Artists</h2>
     </div>
+
     <div class="artists-grid reveal">
+
       <div class="artist">
-        <div class="img-ph"><div class="ph">images/artist-blockprint.jpg</div></div>
+        <div class="img-ph">
+          <img src="images/artist-blockprint.jpg" alt="Block printers working in Jaipur">
+        </div>
         <h4>The Block Printers</h4>
         <div class="craft">Sanganer, Jaipur</div>
         <p>A family workshop carrying five generations of hand-block printing, working with wood blocks carved by their own hands and dyes drawn from indigo, madder, and turmeric.</p>
       </div>
+
       <div class="artist">
-        <div class="img-ph"><div class="ph">images/artist-kantha.jpg</div></div>
+        <div class="img-ph">
+          <img src="images/artist-kantha.jpg" alt="Kantha artisans stitching textiles">
+        </div>
         <h4>The Kantha Stitchers</h4>
         <div class="craft">A Collective of Women Artisans</div>
         <p>A collective of women artisans who learned the running stitch from their mothers, and now pass it forward, turning reclaimed cloth into something entirely new.</p>
       </div>
+
       <div class="artist">
-        <div class="img-ph"><div class="ph">images/artist-paper.jpg</div></div>
+        <div class="img-ph">
+          <img src="images/artist-paper.jpg" alt="Papermakers working with reclaimed cotton">
+        </div>
         <h4>The Papermakers</h4>
         <div class="craft">Jaipur, Rajasthan</div>
         <p>Working entirely by hand, transforming reclaimed cotton waste into paper with a weight and texture no mill can replicate.</p>
       </div>
+
     </div>
   </div>
 </section>
@@ -381,19 +564,34 @@
 <!-- B2B -->
 <section class="b2b" id="b2b">
   <div class="container b2b-grid reveal">
+
     <div>
       <span class="label">Trade &amp; Collaboration</span>
       <h2>Let's chat. If you have a design in mind, let's create it together.</h2>
       <p>Daffodil Studio partners with boutiques, institutions, and design-led companies seeking sourcing with real provenance, from curated ready collections to fully custom, design-your-own commissions.</p>
       <p>Tell us what you're building, and we'll bring Jaipur's ateliers to the table.</p>
     </div>
+
     <form id="b2b-form">
+
       <div class="form-row">
-        <div><label for="name">Full Name</label><input type="text" id="name" required></div>
-        <div><label for="company">Company / Institution</label><input type="text" id="company"></div>
+        <div>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required>
+        </div>
+
+        <div>
+          <label for="company">Company / Institution</label>
+          <input type="text" id="company">
+        </div>
       </div>
+
       <div class="form-row">
-        <div><label for="email">Email</label><input type="email" id="email" required></div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+
         <div>
           <label for="inquiry">Inquiry Type</label>
           <select id="inquiry">
@@ -404,14 +602,25 @@
           </select>
         </div>
       </div>
-      <div><label for="message">Tell us about your project</label><textarea id="message"></textarea></div>
+
+      <div>
+        <label for="message">Tell us about your project</label>
+        <textarea id="message"></textarea>
+      </div>
+
       <button type="submit" class="submit-btn">Send Inquiry</button>
-      <div class="form-success" id="form-success">Thank you — your inquiry has been received. We'll be in touch soon.</div>
+
+      <div class="form-success" id="form-success">
+        Thank you — your inquiry has been received. We'll be in touch soon.
+      </div>
+
     </form>
   </div>
 </section>
 
-<footer><div class="made">Handcrafted in Jaipur, India</div></footer>
+<footer>
+  <div class="made">Handcrafted in Jaipur, India</div>
+</footer>
 
 <script>
   const nav = document.getElementById('nav');
@@ -419,6 +628,7 @@
 
   const tabBtns = document.querySelectorAll('.world-nav button');
   const panels = document.querySelectorAll('.world-panel');
+
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       tabBtns.forEach(b => b.classList.remove('active'));
@@ -437,8 +647,10 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in'); });
   }, { threshold: 0.12 });
+
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
 </html>
+```
