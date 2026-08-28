@@ -1,12 +1,13 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Daffodil Studio — Jaipur, India</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
   :root{
     --bone:#FBFBF9;
@@ -17,154 +18,896 @@
     --sand:#EFE7D8;
     --hair: rgba(28,26,23,0.10);
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bone); color:var(--espresso);
-    font-family:'Cormorant Garamond', serif; font-weight:400; font-size:1.15rem; line-height:1.75;
-    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+
+  *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
   }
-  h1,h2,h3{ font-family:'Cormorant Garamond', serif; font-weight:400; letter-spacing:0.005em; }
-  .label{ font-family:'Jost', sans-serif; font-weight:400; font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--clay); }
-  a{ color:inherit; text-decoration:none; }
-  img{ display:block; width:100%; height:100%; object-fit:cover; }
-  section{ padding: 9vw 7vw; }
-  .container{ max-width:1180px; margin:0 auto; }
 
-  .rule{ width:100%; height:1px; background: linear-gradient(to right, transparent, var(--hair) 20%, var(--hair) 80%, transparent); }
-  .rule-short{ width:64px; height:1px; background:var(--clay); opacity:0.55; margin: 1.6rem 0; }
+  html{
+    scroll-behavior:smooth;
+  }
 
-  .reveal{ opacity:0; transform: translateY(22px); transition: opacity 1.1s ease, transform 1.1s ease; }
-  .reveal.in{ opacity:1; transform:translateY(0); }
+  body{
+    background:var(--bone);
+    color:var(--espresso);
+    font-family:'Cormorant Garamond', serif;
+    font-weight:400;
+    font-size:1.15rem;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
 
-  nav{ position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding: 2rem 7vw; transition: background .5s ease, padding .5s ease; }
-  nav.scrolled{ background: rgba(251,251,249,0.86); backdrop-filter: blur(10px); padding: 1.2rem 7vw; }
-  nav .brand{ font-family:'Cormorant Garamond', serif; font-size:1.4rem; font-weight:500; letter-spacing:0.01em; }
-  nav ul{ list-style:none; display:flex; gap:2.8rem; }
-  nav ul a{ font-family:'Jost', sans-serif; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--espresso-soft); opacity:0.85; transition: opacity .3s, color .3s; }
-  nav ul a:hover{ opacity:1; color:var(--clay); }
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{ outline: 1.5px solid var(--clay); outline-offset:4px; }
-  @media (max-width:760px){ nav ul{ display:none; } }
+  h1,h2,h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:400;
+    letter-spacing:0.005em;
+  }
 
-  .hero{ min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding: 8rem 7vw 4rem; }
-  .hero .label{ margin-bottom:2rem; }
-  .hero h1{ font-size:clamp(2.4rem, 5vw, 4.4rem); font-weight:400; line-height:1.28; max-width:22ch; font-style:italic; }
-  .hero-sub{ margin-top:2.6rem; max-width:44ch; font-size:1.15rem; color:var(--espresso-soft); font-style:normal; }
-  .hero-meta{ margin-top:4.5rem; display:flex; gap:0; flex-wrap:wrap; justify-content:center; }
-  .hero-meta div{ font-family:'Jost', sans-serif; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--espresso-soft); padding: 0 2.2rem; border-right:1px solid var(--hair); }
-  .hero-meta div:last-child{ border-right:none; }
-  .hero-meta div span{ display:block; font-family:'Cormorant Garamond', serif; font-size:1.05rem; letter-spacing:0; text-transform:none; font-style:italic; color:var(--espresso); margin-top:0.5rem; }
-  @media (max-width:640px){ .hero-meta div{ border-right:none; padding: 0.5rem 0; } .hero-meta{ flex-direction:column; gap:0.6rem; } }
-  .scroll-cue{ margin-top:5rem; font-family:'Jost', sans-serif; font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--espresso-soft); display:flex; flex-direction:column; align-items:center; gap:0.8rem; }
-  .scroll-cue .drop{ width:1px; height:38px; background: linear-gradient(to bottom, var(--clay), transparent); animation: drop 2.4s ease-in-out infinite; }
-  @keyframes drop{ 0%{opacity:0; transform:translateY(-6px);} 40%{opacity:1;} 100%{opacity:0; transform:translateY(10px);} }
+  .label{
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--clay);
+  }
 
-  .founder{ background:var(--bone-warm); }
-  .founder-grid{ display:grid; grid-template-columns: 0.85fr 1.15fr; gap:6vw; align-items:center; }
-  @media (max-width:900px){ .founder-grid{ grid-template-columns:1fr; } }
-  .founder-portrait{ aspect-ratio:4/5.3; background: linear-gradient(155deg, var(--sand), var(--bone-warm) 70%); position:relative; overflow:hidden; }
-  .founder-portrait .ph{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem; font-family:'Jost', sans-serif; font-size:0.68rem; letter-spacing:0.08em; color:var(--espresso-soft); opacity:0.5; }
-  .founder-cap{ margin-top:1.1rem; font-family:'Jost', sans-serif; font-size:0.72rem; letter-spacing:0.04em; color:var(--espresso-soft); font-style:italic; }
-  .founder-text .label{ display:block; margin-bottom:1.6rem; }
-  .founder-text h2{ font-size:clamp(1.9rem, 2.8vw, 2.5rem); font-style:italic; line-height:1.35; margin-bottom:2rem; max-width:20ch; }
-  .founder-text p{ color:var(--espresso-soft); margin-bottom:1.5rem; max-width:56ch; }
+  a{
+    color:inherit;
+    text-decoration:none;
+  }
 
-  .pull-quote{ text-align:center; padding: 7vw 10vw 5vw; }
-  .pull-quote p{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:400; font-size:clamp(1.8rem, 3.4vw, 2.9rem); line-height:1.45; color:var(--espresso); max-width:20ch; margin:0 auto; }
-  .founder-close{ max-width:640px; margin: 3rem auto 0; text-align:center; }
-  .founder-close p{ color:var(--espresso-soft); }
+  img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
 
-  .worlds-head{ text-align:center; padding-bottom:0; }
-  .worlds-head .label{ display:block; margin-bottom:1.2rem; }
-  .worlds-head h2{ font-size:clamp(2rem,3.6vw,3rem); font-style:italic; max-width:24ch; margin:0 auto; line-height:1.35; }
+  section{
+    padding:9vw 7vw;
+  }
 
-  .world-nav{ display:flex; justify-content:center; gap:4.5rem; margin: 4rem 0 0; padding-bottom:2rem; }
-  .world-nav button{ background:none; border:none; cursor:pointer; text-align:center; font-family:'Jost', sans-serif; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color: var(--espresso-soft); padding-bottom:0.8rem; border-bottom:1px solid transparent; transition: color .4s, border-color .4s; }
-  .world-nav button span{ display:block; font-family:'Cormorant Garamond', serif; font-size:1.3rem; font-style:italic; text-transform:none; letter-spacing:0; color:var(--espresso); margin-top:0.5rem; }
-  .world-nav button.active{ border-color:var(--clay); color:var(--clay); }
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+  }
 
-  .world-panel{ display:none; }
-  .world-panel.active{ display:block; }
+  .rule{
+    width:100%;
+    height:1px;
+    background:linear-gradient(
+      to right,
+      transparent,
+      var(--hair) 20%,
+      var(--hair) 80%,
+      transparent
+    );
+  }
 
-  .world-story{ display:grid; grid-template-columns: 1fr 1fr; gap:5vw; align-items:center; margin: 4rem 0 5rem; }
-  @media (max-width:900px){ .world-story{ grid-template-columns:1fr; } }
-  .world-story .img-ph{ aspect-ratio:5/4; background:var(--sand); position:relative; overflow:hidden; }
-  .world-story .img-ph .ph{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem; font-family:'Jost', sans-serif; font-size:0.68rem; color:var(--espresso-soft); opacity:0.5; }
-  .world-story p{ color:var(--espresso-soft); margin-bottom:1.3rem; max-width:48ch; }
-  .world-story p strong{ color:var(--espresso); font-weight:500; font-style:italic; }
+  .rule-short{
+    width:64px;
+    height:1px;
+    background:var(--clay);
+    opacity:0.55;
+    margin:1.6rem 0;
+  }
 
-  /* process slide */
-  .process{ margin: 0 0 5.5rem; }
-  .process-head{ text-align:center; margin-bottom:2.2rem; }
-  .process-head .label{ display:block; margin-bottom:0.6rem; }
-  .process-head h3{ font-size:1.6rem; font-style:italic; }
-  .process-body{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap:4vw; align-items:center; }
-  @media (max-width:900px){ .process-body{ grid-template-columns:1fr; } }
-  .process-body .img-ph{ aspect-ratio:16/11; background:var(--bone-warm); position:relative; order:2; overflow:hidden; }
-  @media (max-width:900px){ .process-body .img-ph{ order:0; } }
-  .process-body .img-ph .ph{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:1.6rem; font-family:'Jost', sans-serif; font-size:0.66rem; color:var(--espresso-soft); opacity:0.5; }
-  .process-body p{ color:var(--espresso-soft); }
+  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity 1.1s ease, transform 1.1s ease;
+  }
 
-  .obj-line{ margin-bottom:5rem; }
-  .obj-line-head{ display:flex; align-items:baseline; gap:1.4rem; margin-bottom:2.4rem; }
-  .obj-line-head .num{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.1rem; color:var(--clay); }
-  .obj-line-head h3{ font-size:1.7rem; font-style:italic; font-weight:400; white-space:nowrap; }
-  .obj-line-head .rule{ flex:1; }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
 
-  .obj-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap: 3.5rem 3rem; }
-  .obj-grid.four{ grid-template-columns:repeat(4,1fr); }
-  @media (max-width:900px){ .obj-grid.four{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:640px){ .obj-grid{ grid-template-columns:1fr; } }
-  .obj .img-ph{ aspect-ratio:3/4; background:var(--bone-warm); position:relative; margin-bottom:1.2rem; overflow:hidden; }
-  .obj .img-ph .ph{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:1.2rem; font-family:'Jost', sans-serif; font-size:0.62rem; color:var(--espresso-soft); opacity:0.45; }
-  .obj-cap{ text-align:center; }
-  .obj-cap .name{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.1rem; display:block; }
-  .obj-cap .code{ font-family:'Jost', sans-serif; font-size:0.6rem; letter-spacing:0.1em; color: var(--espresso-soft); opacity:0.6; display:block; margin-top:0.35rem; }
+  nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:2rem 7vw;
+    transition:background .5s ease, padding .5s ease;
+  }
 
-  .see-all{ text-align:center; margin-top:1rem; }
-  .see-all p{ font-style:italic; color:var(--espresso-soft); }
-  .see-all a{ color:var(--clay); border-bottom:1px solid var(--clay); padding-bottom:1px; transition:opacity .3s; }
-  .see-all a:hover{ opacity:0.65; }
+  nav.scrolled{
+    background:rgba(251,251,249,0.86);
+    backdrop-filter:blur(10px);
+    padding:1.2rem 7vw;
+  }
+
+  nav .brand{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.4rem;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:2.8rem;
+  }
+
+  nav ul a{
+    font-family:'Jost', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--espresso-soft);
+    opacity:0.85;
+    transition:opacity .3s, color .3s;
+  }
+
+  nav ul a:hover{
+    opacity:1;
+    color:var(--clay);
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible{
+    outline:1.5px solid var(--clay);
+    outline-offset:4px;
+  }
+
+  @media (max-width:760px){
+    nav ul{
+      display:none;
+    }
+  }
+
+  /* HERO */
+
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:8rem 7vw 4rem;
+  }
+
+  .hero .label{
+    margin-bottom:2rem;
+  }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 4.4rem);
+    font-weight:400;
+    line-height:1.28;
+    max-width:22ch;
+    font-style:italic;
+  }
+
+  .hero-sub{
+    margin-top:2.6rem;
+    max-width:44ch;
+    font-size:1.15rem;
+    color:var(--espresso-soft);
+    font-style:normal;
+  }
+
+  .hero-meta{
+    margin-top:4.5rem;
+    display:flex;
+    gap:0;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .hero-meta div{
+    font-family:'Jost', sans-serif;
+    font-size:0.68rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--espresso-soft);
+    padding:0 2.2rem;
+    border-right:1px solid var(--hair);
+  }
+
+  .hero-meta div:last-child{
+    border-right:none;
+  }
+
+  .hero-meta div span{
+    display:block;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.05rem;
+    letter-spacing:0;
+    text-transform:none;
+    font-style:italic;
+    color:var(--espresso);
+    margin-top:0.5rem;
+  }
+
+  @media (max-width:640px){
+    .hero-meta div{
+      border-right:none;
+      padding:0.5rem 0;
+    }
+
+    .hero-meta{
+      flex-direction:column;
+      gap:0.6rem;
+    }
+  }
+
+  .scroll-cue{
+    margin-top:5rem;
+    font-family:'Jost', sans-serif;
+    font-size:0.66rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--espresso-soft);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.8rem;
+  }
+
+  .scroll-cue .drop{
+    width:1px;
+    height:38px;
+    background:linear-gradient(to bottom, var(--clay), transparent);
+    animation:drop 2.4s ease-in-out infinite;
+  }
+
+  @keyframes drop{
+    0%{
+      opacity:0;
+      transform:translateY(-6px);
+    }
+
+    40%{
+      opacity:1;
+    }
+
+    100%{
+      opacity:0;
+      transform:translateY(10px);
+    }
+  }
+
+  /* FOUNDER */
+
+  .founder{
+    background:var(--bone-warm);
+  }
+
+  .founder-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:6vw;
+    align-items:center;
+  }
+
+  @media (max-width:900px){
+    .founder-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .founder-portrait{
+    aspect-ratio:4/5.3;
+    background:linear-gradient(
+      155deg,
+      var(--sand),
+      var(--bone-warm) 70%
+    );
+    position:relative;
+    overflow:hidden;
+  }
+
+  .founder-portrait img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .founder-portrait .ph{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem;
+    font-family:'Jost', sans-serif;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    color:var(--espresso-soft);
+    opacity:0.5;
+  }
+
+  .founder-cap{
+    margin-top:1.1rem;
+    font-family:'Jost', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.04em;
+    color:var(--espresso-soft);
+    font-style:italic;
+  }
+
+  .founder-text .label{
+    display:block;
+    margin-bottom:1.6rem;
+  }
+
+  .founder-text h2{
+    font-size:clamp(1.9rem, 2.8vw, 2.5rem);
+    font-style:italic;
+    line-height:1.35;
+    margin-bottom:2rem;
+    max-width:20ch;
+  }
+
+  .founder-text p{
+    color:var(--espresso-soft);
+    margin-bottom:1.5rem;
+    max-width:56ch;
+  }
+
+  .pull-quote{
+    text-align:center;
+    padding:7vw 10vw 5vw;
+  }
+
+  .pull-quote p{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(1.8rem, 3.4vw, 2.9rem);
+    line-height:1.45;
+    color:var(--espresso);
+    max-width:20ch;
+    margin:0 auto;
+  }
+
+  .founder-close{
+    max-width:640px;
+    margin:3rem auto 0;
+    text-align:center;
+  }
+
+  .founder-close p{
+    color:var(--espresso-soft);
+  }
+
+  /* WORLDS */
+
+  .worlds-head{
+    text-align:center;
+    padding-bottom:0;
+  }
+
+  .worlds-head .label{
+    display:block;
+    margin-bottom:1.2rem;
+  }
+
+  .worlds-head h2{
+    font-size:clamp(2rem,3.6vw,3rem);
+    font-style:italic;
+    max-width:24ch;
+    margin:0 auto;
+    line-height:1.35;
+  }
+
+  .world-nav{
+    display:flex;
+    justify-content:center;
+    gap:4.5rem;
+    margin:4rem 0 0;
+    padding-bottom:2rem;
+  }
+
+  .world-nav button{
+    background:none;
+    border:none;
+    cursor:pointer;
+    text-align:center;
+    font-family:'Jost', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--espresso-soft);
+    padding-bottom:0.8rem;
+    border-bottom:1px solid transparent;
+    transition:color .4s, border-color .4s;
+  }
+
+  .world-nav button span{
+    display:block;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.3rem;
+    font-style:italic;
+    text-transform:none;
+    letter-spacing:0;
+    color:var(--espresso);
+    margin-top:0.5rem;
+  }
+
+  .world-nav button.active{
+    border-color:var(--clay);
+    color:var(--clay);
+  }
+
+  .world-panel{
+    display:none;
+  }
+
+  .world-panel.active{
+    display:block;
+  }
+
+  .world-story{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5vw;
+    align-items:center;
+    margin:4rem 0 5rem;
+  }
+
+  @media (max-width:900px){
+    .world-story{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .world-story .img-ph{
+    aspect-ratio:5/4;
+    background:var(--sand);
+    position:relative;
+    overflow:hidden;
+  }
+
+  .world-story .img-ph .ph{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem;
+    font-family:'Jost', sans-serif;
+    font-size:0.68rem;
+    color:var(--espresso-soft);
+    opacity:0.5;
+  }
+
+  .world-story p{
+    color:var(--espresso-soft);
+    margin-bottom:1.3rem;
+    max-width:48ch;
+  }
+
+  .world-story p strong{
+    color:var(--espresso);
+    font-weight:500;
+    font-style:italic;
+  }
+
+  /* PROCESS */
+
+  .process{
+    margin:0 0 5.5rem;
+  }
+
+  .process-head{
+    text-align:center;
+    margin-bottom:2.2rem;
+  }
+
+  .process-head .label{
+    display:block;
+    margin-bottom:0.6rem;
+  }
+
+  .process-head h3{
+    font-size:1.6rem;
+    font-style:italic;
+  }
+
+  .process-body{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:4vw;
+    align-items:center;
+  }
+
+  @media (max-width:900px){
+    .process-body{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .process-body .img-ph{
+    aspect-ratio:16/11;
+    background:var(--bone-warm);
+    position:relative;
+    order:2;
+    overflow:hidden;
+  }
+
+  @media (max-width:900px){
+    .process-body .img-ph{
+      order:0;
+    }
+  }
+
+  .process-body .img-ph .ph{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:1.6rem;
+    font-family:'Jost', sans-serif;
+    font-size:0.66rem;
+    color:var(--espresso-soft);
+    opacity:0.5;
+  }
+
+  .process-body p{
+    color:var(--espresso-soft);
+  }
+
+  /* OBJECTS */
+
+  .obj-line{
+    margin-bottom:5rem;
+  }
+
+  .obj-line-head{
+    display:flex;
+    align-items:baseline;
+    gap:1.4rem;
+    margin-bottom:2.4rem;
+  }
+
+  .obj-line-head .num{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--clay);
+  }
+
+  .obj-line-head h3{
+    font-size:1.7rem;
+    font-style:italic;
+    font-weight:400;
+    white-space:nowrap;
+  }
+
+  .obj-line-head .rule{
+    flex:1;
+  }
+
+  .obj-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:3.5rem 3rem;
+  }
+
+  .obj-grid.four{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  @media (max-width:900px){
+    .obj-grid.four{
+      grid-template-columns:repeat(2,1fr);
+    }
+  }
+
+  @media (max-width:640px){
+    .obj-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .obj .img-ph{
+    aspect-ratio:3/4;
+    background:var(--bone-warm);
+    position:relative;
+    margin-bottom:1.2rem;
+    overflow:hidden;
+  }
+
+  .obj .img-ph .ph{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:1.2rem;
+    font-family:'Jost', sans-serif;
+    font-size:0.62rem;
+    color:var(--espresso-soft);
+    opacity:0.45;
+  }
+
+  .obj-cap{
+    text-align:center;
+  }
+
+  .obj-cap .name{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    display:block;
+  }
+
+  .obj-cap .code{
+    font-family:'Jost', sans-serif;
+    font-size:0.6rem;
+    letter-spacing:0.1em;
+    color:var(--espresso-soft);
+    opacity:0.6;
+    display:block;
+    margin-top:0.35rem;
+  }
+
+  .see-all{
+    text-align:center;
+    margin-top:1rem;
+  }
+
+  .see-all p{
+    font-style:italic;
+    color:var(--espresso-soft);
+  }
+
+  .see-all a{
+    color:var(--clay);
+    border-bottom:1px solid var(--clay);
+    padding-bottom:1px;
+    transition:opacity .3s;
+  }
+
+  .see-all a:hover{
+    opacity:0.65;
+  }
 
   /* ARTISTS */
-  .artists{ background:var(--bone-warm); }
-  .artists-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap: 3.5rem; margin-top:4rem; }
-  @media (max-width:800px){ .artists-grid{ grid-template-columns:1fr; max-width:420px; margin-left:auto; margin-right:auto; } }
-  .artist .img-ph{ aspect-ratio:4/5; background:var(--sand); position:relative; margin-bottom:1.4rem; overflow:hidden; }
-  .artist .img-ph .ph{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:1.6rem; font-family:'Jost', sans-serif; font-size:0.64rem; color:var(--espresso-soft); opacity:0.5; }
-  .artist h4{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.35rem; font-weight:500; }
-  .artist .craft{ font-family:'Jost', sans-serif; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--clay); margin: 0.4rem 0 0.8rem; }
-  .artist p{ color:var(--espresso-soft); font-size:1.02rem; }
 
-  .b2b{ background:var(--espresso); color:var(--bone); }
-  .b2b-grid{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap:6vw; }
-  @media (max-width:900px){ .b2b-grid{ grid-template-columns:1fr; } }
-  .b2b .label{ color:var(--clay); }
-  .b2b h2{ font-size:clamp(2rem,3.4vw,2.9rem); font-style:italic; line-height:1.35; margin: 1.4rem 0 1.8rem; max-width:16ch; }
-  .b2b p{ color:rgba(251,251,249,0.68); max-width:44ch; margin-bottom:1.3rem; }
+  .artists{
+    background:var(--bone-warm);
+  }
 
-  form{ display:grid; gap:1.8rem; }
-  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:1.8rem; }
-  @media (max-width:600px){ .form-row{ grid-template-columns:1fr; } }
-  label{ font-family:'Jost', sans-serif; font-size:0.66rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(251,251,249,0.5); display:block; margin-bottom:0.6rem; }
-  input, textarea, select{ width:100%; background:transparent; border:none; border-bottom:1px solid rgba(251,251,249,0.22); color:var(--bone); font-family:'Cormorant Garamond', serif; font-size:1.1rem; padding:0.6rem 0; outline:none; transition: border-color .4s; }
-  input:focus, textarea:focus, select:focus{ border-color:var(--clay); }
-  select option{ background:var(--espresso); font-family:'Jost', sans-serif; }
-  textarea{ resize:vertical; min-height:70px; }
-  .submit-btn{ margin-top:0.8rem; justify-self:start; font-family:'Jost', sans-serif; font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; background:none; color:var(--bone); border:1px solid var(--clay); padding:1.1rem 2.8rem; cursor:pointer; transition: background .5s ease, color .5s ease; }
-  .submit-btn:hover{ background:var(--clay); color:var(--espresso); }
-  .form-success{ display:none; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.2rem; color:var(--clay); margin-top:0.6rem; }
+  .artists-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:3.5rem;
+    margin-top:4rem;
+  }
 
-  footer{ text-align:center; padding: 4.5rem 7vw 3rem; background:var(--espresso); }
-  footer .made{ font-family:'Jost', sans-serif; font-size:0.66rem; letter-spacing:0.32em; text-transform:uppercase; color:rgba(251,251,249,0.45); }
+  @media (max-width:800px){
+    .artists-grid{
+      grid-template-columns:1fr;
+      max-width:420px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+  }
 
-  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } .reveal{ opacity:1 !important; transform:none !important; } }
+  .artist .img-ph{
+    aspect-ratio:4/5;
+    background:var(--sand);
+    position:relative;
+    margin-bottom:1.4rem;
+    overflow:hidden;
+  }
+
+  .artist .img-ph .ph{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:1.6rem;
+    font-family:'Jost', sans-serif;
+    font-size:0.64rem;
+    color:var(--espresso-soft);
+    opacity:0.5;
+  }
+
+  .artist h4{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.35rem;
+    font-weight:500;
+  }
+
+  .artist .craft{
+    font-family:'Jost', sans-serif;
+    font-size:0.66rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--clay);
+    margin:0.4rem 0 0.8rem;
+  }
+
+  .artist p{
+    color:var(--espresso-soft);
+    font-size:1.02rem;
+  }
+
+  /* B2B */
+
+  .b2b{
+    background:var(--espresso);
+    color:var(--bone);
+  }
+
+  .b2b-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:6vw;
+  }
+
+  @media (max-width:900px){
+    .b2b-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .b2b .label{
+    color:var(--clay);
+  }
+
+  .b2b h2{
+    font-size:clamp(2rem,3.4vw,2.9rem);
+    font-style:italic;
+    line-height:1.35;
+    margin:1.4rem 0 1.8rem;
+    max-width:16ch;
+  }
+
+  .b2b p{
+    color:rgba(251,251,249,0.68);
+    max-width:44ch;
+    margin-bottom:1.3rem;
+  }
+
+  form{
+    display:grid;
+    gap:1.8rem;
+  }
+
+  .form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.8rem;
+  }
+
+  @media (max-width:600px){
+    .form-row{
+      grid-template-columns:1fr;
+    }
+  }
+
+  label{
+    font-family:'Jost', sans-serif;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(251,251,249,0.5);
+    display:block;
+    margin-bottom:0.6rem;
+  }
+
+  input,
+  textarea,
+  select{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid rgba(251,251,249,0.22);
+    color:var(--bone);
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.1rem;
+    padding:0.6rem 0;
+    outline:none;
+    transition:border-color .4s;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus{
+    border-color:var(--clay);
+  }
+
+  select option{
+    background:var(--espresso);
+    font-family:'Jost', sans-serif;
+  }
+
+  textarea{
+    resize:vertical;
+    min-height:70px;
+  }
+
+  .submit-btn{
+    margin-top:0.8rem;
+    justify-self:start;
+    font-family:'Jost', sans-serif;
+    font-size:0.7rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    background:none;
+    color:var(--bone);
+    border:1px solid var(--clay);
+    padding:1.1rem 2.8rem;
+    cursor:pointer;
+    transition:background .5s ease, color .5s ease;
+  }
+
+  .submit-btn:hover{
+    background:var(--clay);
+    color:var(--espresso);
+  }
+
+  .form-success{
+    display:none;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.2rem;
+    color:var(--clay);
+    margin-top:0.6rem;
+  }
+
+  footer{
+    text-align:center;
+    padding:4.5rem 7vw 3rem;
+    background:var(--espresso);
+  }
+
+  footer .made{
+    font-family:'Jost', sans-serif;
+    font-size:0.66rem;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:rgba(251,251,249,0.45);
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{
+      animation:none !important;
+      transition:none !important;
+    }
+
+    .reveal{
+      opacity:1 !important;
+      transform:none !important;
+    }
+  }
 </style>
 </head>
+
 <body>
+
+<!-- NAV -->
 
 <nav id="nav">
   <div class="brand">Daffodil Studio</div>
+
   <ul>
     <li><a href="#top">Daffodil Studio</a></li>
     <li><a href="#worlds">The Dual Worlds</a></li>
@@ -172,485 +915,1331 @@
   </ul>
 </nav>
 
+
+<!-- HERO -->
+
 <section class="hero" id="top">
-  <span class="label">Working Across Craft & Circular Materials</span>
-  <h1>Some things are made. Others are grown, stitch by stitch, over time.</h1>
-  <p class="hero-sub">Daffodil Studio sources rare textures and material traditions from Jaipur's finest ateliers - cotton papers with the weight of history, and textiles carrying generations of hand.</p>
+
+  <span class="label">
+    Working Across Craft & Circular Materials
+  </span>
+
+  <h1>
+    Some things are made. Others are grown, stitch by stitch, over time.
+  </h1>
+
+  <p class="hero-sub">
+    Daffodil Studio sources rare textures and material traditions from Jaipur's finest ateliers - cotton papers with the weight of history, and textiles carrying generations of hand.
+  </p>
+
   <div class="hero-meta">
-    <div>Origin<span>Jaipur, Rajasthan</span></div>
-    <div>Practice<span>Kantha · Block Print · Cotton Paper</span></div>
+    <div>
+      Origin
+      <span>Jaipur, Rajasthan</span>
+    </div>
+
+    <div>
+      Practice
+      <span>Kantha · Block Print · Cotton Paper</span>
+    </div>
   </div>
-  <div class="scroll-cue"><div class="drop"></div>Scroll</div>
+
+  <div class="scroll-cue">
+    <div class="drop"></div>
+    Scroll
+  </div>
+
 </section>
+
 
 <!-- FOUNDER / WE -->
+
 <section class="founder">
+
   <div class="container founder-grid reveal">
+
     <div>
-      <div class="founder-portrait">
-        <img src="images/founder-sara.jpg" alt="Sara Khandelwal, Founder of Daffodil Studio">
+
+      <div class="img-ph">
+
+        <div class="founder-portrait">
+
+          <img
+            src="./images/founder-sara.jpg"
+            alt="Sara Khandelwal, Founder of Daffodil Studio"
+          >
+
+        </div>
+
       </div>
-      <div class="founder-cap">Sara Khandelwal, Founder — photographed in Jaipur</div>
+
+      <div class="founder-cap">
+        Sara Khandelwal, Founder — photographed in Jaipur
+      </div>
+
     </div>
+
 
     <div class="founder-text">
+
       <span class="label">Who We Are</span>
-      <h2>A small studio, and the many hands behind it.</h2>
-      <p>Daffodil Studio began with a question that wouldn't leave founder Sara Khandelwal alone: why did the things she owned so rarely feel like they were made for her, with care, with time, with intention?</p>
-      <p>She found her answer in Jaipur, among artisans who measure their work in seasons, not shipments. What began as one person's question has become something larger than any one of us - a small, devoted community of printers, quilters, weavers, and papermakers, each lending their hand to what we make together.</p>
-      <p>At Daffodil Studio, we are not a marketplace of goods. We are a considered introduction between two worlds that were always meant to meet and every piece that reaches you carries all of our hands, not just one.</p>
-      <p>We work across circular materials, textile craft, and contemporary design to create objects and develop materials for people and organizations looking for something beyond the conventional.</p>
+
+      <h2>
+        A small studio, and the many hands behind it.
+      </h2>
+
+      <p>
+        Daffodil Studio began with a question that wouldn't leave founder Sara Khandelwal alone: why did the things she owned so rarely feel like they were made for her, with care, with time, with intention?
+      </p>
+
+      <p>
+        She found her answer in Jaipur, among artisans who measure their work in seasons, not shipments. What began as one person's question has become something larger than any one of us - a small, devoted community of printers, quilters, weavers, and papermakers, each lending their hand to what we make together.
+      </p>
+
+      <p>
+        At Daffodil Studio, we are not a marketplace of goods. We are a considered introduction between two worlds that were always meant to meet and every piece that reaches you carries all of our hands, not just one.
+      </p>
+
+      <p>
+        We work across circular materials, textile craft, and contemporary design to create objects and develop materials for people and organizations looking for something beyond the conventional.
+      </p>
+
     </div>
+
   </div>
+
 
   <div class="pull-quote reveal">
-    <p>"You are special and the materials you surround yourself with should be special too."</p>
-    <div class="rule-short" style="margin-left:auto; margin-right:auto;"></div>
+
+    <p>
+      "You are special and the materials you surround yourself with should be special too."
+    </p>
+
+    <div
+      class="rule-short"
+      style="margin-left:auto; margin-right:auto;"
+    ></div>
+
   </div>
+
 
   <div class="founder-close reveal">
-    <p>This belief shapes everything we bring forward: the structural weight of true cotton paper, the depth only hand-guided indigo can achieve, the quiet permanence of a Kantha stitch laid by hand. Every piece carries time inside it.</p>
+
+    <p>
+      This belief shapes everything we bring forward: the structural weight of true cotton paper, the depth only hand-guided indigo can achieve, the quiet permanence of a Kantha stitch laid by hand. Every piece carries time inside it.
+    </p>
+
   </div>
+
 </section>
 
+
 <!-- DUAL WORLDS -->
+
 <section id="worlds">
+
   <div class="container">
+
     <div class="worlds-head reveal">
-      <span class="label">Two ways we rethink materials.</span>
-      <h2>The Dual Worlds of Daffodil</h2>
+
+      <span class="label">
+        Two ways we rethink materials.
+      </span>
+
+      <h2>
+        The Dual Worlds of Daffodil
+      </h2>
+
     </div>
+
 
     <div class="world-nav">
-      <button class="active" data-tab="stationery">01<span>Circular Stationery</span></button>
-      <button data-tab="textiles">02<span>Artistic Textiles</span></button>
+
+      <button
+        class="active"
+        data-tab="stationery"
+      >
+        01
+        <span>Circular Stationery</span>
+      </button>
+
+      <button
+        data-tab="textiles"
+      >
+        02
+        <span>Artistic Textiles</span>
+      </button>
+
     </div>
+
 
     <!-- STATIONERY -->
-    <div class="world-panel active" id="panel-stationery">
+
+    <div
+      class="world-panel active"
+      id="panel-stationery"
+    >
 
       <div class="world-story reveal">
+
         <div class="img-ph">
-          <img src="images/stationery-story-1.jpg" alt="Circular stationery made from reclaimed cotton">
+
+          <img
+            src="./images/stationery-story-1.jpg"
+            alt="Circular stationery made from reclaimed cotton"
+          >
+
         </div>
 
         <div>
-          <p><strong>Paper with a soul, and a second life.</strong></p>
-          <p>Every year, textile production leaves behind enormous amounts of material offcuts, remnants, and fibers that have already been through one production cycle.We work with cotton textile waste and remnants, redirecting this material into a new form: paper.</p>
-          <p>Instead of allowing textile material to end its useful life as waste, we give it another purpose as stationery designed for everyday use.</p>
+
+          <p>
+            <strong>
+              Paper with a soul, and a second life.
+            </strong>
+          </p>
+
+          <p>
+            Every year, textile production leaves behind enormous amounts of material offcuts, remnants, and fibers that have already been through one production cycle.We work with cotton textile waste and remnants, redirecting this material into a new form: paper.
+          </p>
+
+          <p>
+            Instead of allowing textile material to end its useful life as waste, we give it another purpose as stationery designed for everyday use.
+          </p>
+
         </div>
+
       </div>
 
+
+      <!-- NOTEBOOKS -->
+
       <div class="obj-line reveal">
-        <div class="obj-line-head"><span class="num">World I / No. 01</span><h3>Notebooks</h3><div class="rule"></div></div>
+
+        <div class="obj-line-head">
+
+          <span class="num">
+            World I / No. 01
+          </span>
+
+          <h3>Notebooks</h3>
+
+          <div class="rule"></div>
+
+        </div>
+
 
         <div class="obj-grid">
 
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/notebooks-var1.jpg" alt="The Heritage Journal">
+              <div class="ph">images/notebooks-var1.jpg</div>
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Heritage Journal</span>
-              <span class="code">DS · ST · 101</span>
+              <span class="name">
+                The Heritage Journal
+              </span>
+
+              <span class="code">
+                DS · ST · 101
+              </span>
             </div>
+
           </div>
 
+
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/notebooks-var2.jpg" alt="The Minimalist Sketchbook">
+              <div class="ph">images/notebooks-var2.jpg</div>
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Minimalist Sketchbook</span>
-              <span class="code">DS · ST · 102</span>
+              <span class="name">
+                The Minimalist Sketchbook
+              </span>
+
+              <span class="code">
+                DS · ST · 102
+              </span>
             </div>
+
           </div>
 
         </div>
+
       </div>
 
+
+      <!-- PHOTO FRAMES -->
+
       <div class="obj-line reveal">
-        <div class="obj-line-head"><span class="num">World I / No. 02</span><h3>Photo Frames</h3><div class="rule"></div></div>
+
+        <div class="obj-line-head">
+
+          <span class="num">
+            World I / No. 02
+          </span>
+
+          <h3>Photo Frames</h3>
+
+          <div class="rule"></div>
+
+        </div>
+
 
         <div class="obj-grid">
 
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/frames-var1.jpg" alt="The Alabaster Border">
+              <div class="ph">images/frames-var1.jpg</div>
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Alabaster Border</span>
-              <span class="code">DS · ST · 201</span>
+
+              <span class="name">
+                The Alabaster Border
+              </span>
+
+              <span class="code">
+                DS · ST · 201
+              </span>
+
             </div>
+
           </div>
 
+
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/frames-var2.jpg" alt="The Textured Cotton Mat">
+              <div class="ph">images/frames-var2.jpg</div>
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Textured Cotton Mat</span>
-              <span class="code">DS · ST · 202</span>
+
+              <span class="name">
+                The Textured Cotton Mat
+              </span>
+
+              <span class="code">
+                DS · ST · 202
+              </span>
+
             </div>
+
           </div>
 
         </div>
+
       </div>
+
 
       <div class="see-all reveal">
-        <p>To see our whole collection, <a href="#b2b">email us or send an inquiry</a>.</p>
+
+        <p>
+          To see our whole collection,
+          <a href="#b2b">
+            email us or send an inquiry
+          </a>.
+        </p>
+
       </div>
+
     </div>
 
+
     <!-- TEXTILES -->
-    <div class="world-panel" id="panel-textiles">
+
+    <div
+      class="world-panel"
+      id="panel-textiles"
+    >
+
+      <!-- TEXTILE STORY -->
 
       <div class="world-story reveal">
+
         <div class="img-ph">
-          <img src="images/textiles-story-1.jpg" alt="Artistic textiles and handcrafted textile work">
+
+          <div class="ph">
+            images/textiles-story-1.jpg
+          </div>
+
         </div>
 
         <div>
-          <p><strong>History, woven and stamped into cloth.</strong></p>
-          <p>Kantha is a textile carrying stories from generations, a canvas that literalizes history, one hand-laid stitch at a time, passed from grandmother to daughter across seasons of quiet work.</p>
-          <p>Block printing is a meticulous master art form of rhythm, pressure, and living ink - a single motif pressed by hand, again and again, until the pattern breathes.</p>
+
+          <p>
+            <strong>
+              History, woven and stamped into cloth.
+            </strong>
+          </p>
+
+          <p>
+            Kantha is a textile carrying stories from generations, a canvas that literalizes history, one hand-laid stitch at a time, passed from grandmother to daughter across seasons of quiet work.
+          </p>
+
+          <p>
+            Block printing is a meticulous master art form of rhythm, pressure, and living ink - a single motif pressed by hand, again and again, until the pattern breathes.
+          </p>
+
         </div>
+
       </div>
+
 
       <!-- PROCESS: KANTHA -->
+
       <div class="process reveal">
+
         <div class="process-head">
-          <span class="label">The Process</span>
-          <h3>Kantha, Stitch by Stitch</h3>
+
+          <span class="label">
+            The Process
+          </span>
+
+          <h3>
+            Kantha, Stitch by Stitch
+          </h3>
+
         </div>
+
 
         <div class="process-body">
-          <p>Layers of worn, gathered cloth are laid flat and stitched by hand in fine, running lines - the same technique women in Bengal have used for generations to turn old saris into something new. There is no pattern drawn beforehand; the maker's hand decides as she goes, so no two pieces of Kantha are ever quite the same.</p>
+
+          <p>
+            Layers of worn, gathered cloth are laid flat and stitched by hand in fine, running lines - the same technique women in Bengal have used for generations to turn old saris into something new. There is no pattern drawn beforehand; the maker's hand decides as she goes, so no two pieces of Kantha are ever quite the same.
+          </p>
+
 
           <div class="img-ph">
-            <img src="images/process-kantha-1.jpg" alt="Kantha stitching process">
+
+            <div class="ph">
+              images/process-kantha-1.jpg
+            </div>
+
           </div>
+
         </div>
+
       </div>
 
+
+      <!-- KANTHA JACKETS -->
+
       <div class="obj-line reveal">
-        <div class="obj-line-head"><span class="num">World II / No. 01</span><h3>Kantha Jackets</h3><div class="rule"></div></div>
+
+        <div class="obj-line-head">
+
+          <span class="num">
+            World II / No. 01
+          </span>
+
+          <h3>
+            Kantha Jackets
+          </h3>
+
+          <div class="rule"></div>
+
+        </div>
+
 
         <div class="obj-grid">
 
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/kantha-jacket-var1.jpg" alt="The Heirloom Quilted Jacket">
+
+              <div class="ph">
+                images/kantha-jacket-var1.jpg
+              </div>
+
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Heirloom Quilted Jacket</span>
-              <span class="code">DS · TX · 101</span>
+
+              <span class="name">
+                The Heirloom Quilted Jacket
+              </span>
+
+              <span class="code">
+                DS · TX · 101
+              </span>
+
             </div>
+
           </div>
 
+
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/kantha-jacket-var2.jpg" alt="The Layered Field Jacket">
+
+              <div class="ph">
+                images/kantha-jacket-var2.jpg
+              </div>
+
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Layered Field Jacket</span>
-              <span class="code">DS · TX · 102</span>
+
+              <span class="name">
+                The Layered Field Jacket
+              </span>
+
+              <span class="code">
+                DS · TX · 102
+              </span>
+
             </div>
+
           </div>
 
         </div>
+
       </div>
 
+
+      <!-- KANTHA BAGS -->
+
       <div class="obj-line reveal">
-        <div class="obj-line-head"><span class="num">World II / No. 02</span><h3>Kantha Bags</h3><div class="rule"></div></div>
+
+        <div class="obj-line-head">
+
+          <span class="num">
+            World II / No. 02
+          </span>
+
+          <h3>
+            Kantha Bags
+          </h3>
+
+          <div class="rule"></div>
+
+        </div>
+
 
         <div class="obj-grid">
 
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/kantha-bag-var1.jpg" alt="The Generational Tote">
+
+              <div class="ph">
+                images/kantha-bag-var1.jpg
+              </div>
+
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Generational Tote</span>
-              <span class="code">DS · TX · 103</span>
+
+              <span class="name">
+                The Generational Tote
+              </span>
+
+              <span class="code">
+                DS · TX · 103
+              </span>
+
             </div>
+
           </div>
 
+
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/kantha-bag-var2.jpg" alt="The Stitched Satchel">
+
+              <div class="ph">
+                images/kantha-bag-var2.jpg
+              </div>
+
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Stitched Satchel</span>
-              <span class="code">DS · TX · 104</span>
+
+              <span class="name">
+                The Stitched Satchel
+              </span>
+
+              <span class="code">
+                DS · TX · 104
+              </span>
+
             </div>
+
           </div>
 
         </div>
+
       </div>
+
 
       <!-- PROCESS: BLOCK PRINT -->
+
       <div class="process reveal">
+
         <div class="process-head">
-          <span class="label">The Process</span>
-          <h3>Block Print, Pressed by Hand</h3>
+
+          <span class="label">
+            The Process
+          </span>
+
+          <h3>
+            Block Print, Pressed by Hand
+          </h3>
+
         </div>
+
 
         <div class="process-body">
 
           <div class="img-ph">
-            <img src="images/process-blockprint-1.jpg" alt="Hand block printing process">
+
+            <div class="ph">
+              images/process-blockprint-1.jpg
+            </div>
+
           </div>
 
-          <p>A motif begins as a hand-carved wood block, sometimes decades old, passed between printers as an inheritance of skill. Dipped in natural, botanical dye and pressed onto cloth stamp by stamp, the pattern takes shape slowly, a discipline of rhythm and pressure that no machine has managed to replicate.</p>
+
+          <p>
+            A motif begins as a hand-carved wood block, sometimes decades old, passed between printers as an inheritance of skill. Dipped in natural, botanical dye and pressed onto cloth stamp by stamp, the pattern takes shape slowly, a discipline of rhythm and pressure that no machine has managed to replicate.
+          </p>
 
         </div>
+
       </div>
 
+
+      <!-- BLOCK PRINT JACKETS -->
+
       <div class="obj-line reveal">
-        <div class="obj-line-head"><span class="num">World II / No. 03</span><h3>Block Print Jackets</h3><div class="rule"></div></div>
+
+        <div class="obj-line-head">
+
+          <span class="num">
+            World II / No. 03
+          </span>
+
+          <h3>
+            Block Print Jackets
+          </h3>
+
+          <div class="rule"></div>
+
+        </div>
+
 
         <div class="obj-grid">
 
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/blockprint-jacket-var1.jpg" alt="The Meticulous Print Kimono">
+
+              <div class="ph">
+                images/blockprint-jacket-var1.jpg
+              </div>
+
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Meticulous Print Kimono</span>
-              <span class="code">DS · TX · 201</span>
+
+              <span class="name">
+                The Meticulous Print Kimono
+              </span>
+
+              <span class="code">
+                DS · TX · 201
+              </span>
+
             </div>
+
           </div>
 
+
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/blockprint-jacket-var2.jpg" alt="The Quilted Motif Jacket">
+
+              <div class="ph">
+                images/blockprint-jacket-var2.jpg
+              </div>
+
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Quilted Motif Jacket</span>
-              <span class="code">DS · TX · 202</span>
+
+              <span class="name">
+                The Quilted Motif Jacket
+              </span>
+
+              <span class="code">
+                DS · TX · 202
+              </span>
+
             </div>
+
           </div>
 
         </div>
+
       </div>
 
+
+      <!-- BLOCK PRINT BAGS -->
+
       <div class="obj-line reveal">
-        <div class="obj-line-head"><span class="num">World II / No. 04</span><h3>Block Print Bags</h3><div class="rule"></div></div>
+
+        <div class="obj-line-head">
+
+          <span class="num">
+            World II / No. 04
+          </span>
+
+          <h3>
+            Block Print Bags
+          </h3>
+
+          <div class="rule"></div>
+
+        </div>
+
 
         <div class="obj-grid four">
 
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/blockprint-bag-var1.jpg" alt="The Indigo Motif Satchel">
+
+              <div class="ph">
+                images/blockprint-bag-var1.jpg
+              </div>
+
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Indigo Motif Satchel</span>
-              <span class="code">DS · TX · 203</span>
+
+              <span class="name">
+                The Indigo Motif Satchel
+              </span>
+
+              <span class="code">
+                DS · TX · 203
+              </span>
+
             </div>
+
           </div>
 
-          <div class="obj">
-            <div class="img-ph">
-              <img src="images/blockprint-bag-var2.jpg" alt="The Everyday Tote">
-            </div>
-            <div class="obj-cap">
-              <span class="name">The Everyday Tote</span>
-              <span class="code">DS · TX · 204</span>
-            </div>
-          </div>
 
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/blockprint-bag-var3.jpg" alt="The Jacquard Weave Bag">
+
+              <div class="ph">
+                images/blockprint-bag-var2.jpg
+              </div>
+
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Jacquard Weave Bag</span>
-              <span class="code">DS · TX · 205</span>
+
+              <span class="name">
+                The Everyday Tote
+              </span>
+
+              <span class="code">
+                DS · TX · 204
+              </span>
+
             </div>
+
           </div>
 
+
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/blockprint-bag-var4.jpg" alt="The Folded Pouch">
+
+              <div class="ph">
+                images/blockprint-bag-var3.jpg
+              </div>
+
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Folded Pouch</span>
-              <span class="code">DS · TX · 206</span>
+
+              <span class="name">
+                The Jacquard Weave Bag
+              </span>
+
+              <span class="code">
+                DS · TX · 205
+              </span>
+
             </div>
+
+          </div>
+
+
+          <div class="obj">
+
+            <div class="img-ph">
+
+              <div class="ph">
+                images/blockprint-bag-var4.jpg
+              </div>
+
+            </div>
+
+            <div class="obj-cap">
+
+              <span class="name">
+                The Folded Pouch
+              </span>
+
+              <span class="code">
+                DS · TX · 206
+              </span>
+
+            </div>
+
           </div>
 
         </div>
+
       </div>
 
+
+      <!-- BLOCK PRINT APPAREL -->
+
       <div class="obj-line reveal">
-        <div class="obj-line-head"><span class="num">World II / No. 05</span><h3>Block Print Apparel</h3><div class="rule"></div></div>
+
+        <div class="obj-line-head">
+
+          <span class="num">
+            World II / No. 05
+          </span>
+
+          <h3>
+            Block Print Apparel
+          </h3>
+
+          <div class="rule"></div>
+
+        </div>
+
 
         <div class="obj-grid">
 
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/blockprint-apparel-var1.jpg" alt="The Printed Wrap Dress">
+
+              <div class="ph">
+                images/blockprint-apparel-var1.jpg
+              </div>
+
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Printed Wrap Dress</span>
-              <span class="code">DS · TX · 207</span>
+
+              <span class="name">
+                The Printed Wrap Dress
+              </span>
+
+              <span class="code">
+                DS · TX · 207
+              </span>
+
             </div>
+
           </div>
 
+
           <div class="obj">
+
             <div class="img-ph">
-              <img src="images/blockprint-apparel-var2.jpg" alt="The Loose Weave Set">
+
+              <div class="ph">
+                images/blockprint-apparel-var2.jpg
+              </div>
+
             </div>
+
             <div class="obj-cap">
-              <span class="name">The Loose Weave Set</span>
-              <span class="code">DS · TX · 208</span>
+
+              <span class="name">
+                The Loose Weave Set
+              </span>
+
+              <span class="code">
+                DS · TX · 208
+              </span>
+
             </div>
+
           </div>
 
         </div>
+
       </div>
 
+
       <div class="see-all reveal">
-        <p>To see our whole collection, <a href="#b2b">email us or send an inquiry</a>.</p>
+
+        <p>
+          To see our whole collection,
+          <a href="#b2b">
+            email us or send an inquiry
+          </a>.
+        </p>
+
       </div>
 
     </div>
+
   </div>
+
 </section>
 
+
 <!-- MEET OUR ARTISTS -->
+
 <section class="artists">
+
   <div class="container">
 
     <div class="worlds-head reveal">
-      <span class="label">Behind Every Piece</span>
-      <h2>Meet Our Artists</h2>
+
+      <span class="label">
+        Behind Every Piece
+      </span>
+
+      <h2>
+        Meet Our Artists
+      </h2>
+
     </div>
+
 
     <div class="artists-grid reveal">
 
-      <div class="artist">
-        <div class="img-ph">
-          <img src="images/artist-blockprint.jpg" alt="Block printers working in Jaipur">
-        </div>
-        <h4>The Block Printers</h4>
-        <div class="craft">Sanganer, Jaipur</div>
-        <p>A family workshop carrying five generations of hand-block printing, working with wood blocks carved by their own hands and dyes drawn from indigo, madder, and turmeric.</p>
-      </div>
+
+      <!-- BLOCK PRINTERS -->
 
       <div class="artist">
+
         <div class="img-ph">
-          <img src="images/artist-kantha.jpg" alt="Kantha artisans stitching textiles">
+
+          <div class="ph">
+            images/artist-blockprint.jpg
+          </div>
+
         </div>
-        <h4>The Kantha Stitchers</h4>
-        <div class="craft">A Collective of Women Artisans</div>
-        <p>A collective of women artisans who learned the running stitch from their mothers, and now pass it forward, turning reclaimed cloth into something entirely new.</p>
+
+        <h4>
+          The Block Printers
+        </h4>
+
+        <div class="craft">
+          Sanganer, Jaipur
+        </div>
+
+        <p>
+          A family workshop carrying five generations of hand-block printing, working with wood blocks carved by their own hands and dyes drawn from indigo, madder, and turmeric.
+        </p>
+
       </div>
 
+
+      <!-- KANTHA STITCHERS -->
+
       <div class="artist">
+
         <div class="img-ph">
-          <img src="images/artist-paper.jpg" alt="Papermakers working with reclaimed cotton">
+
+          <div class="ph">
+            images/artist-kantha.jpg
+          </div>
+
         </div>
-        <h4>The Papermakers</h4>
-        <div class="craft">Jaipur, Rajasthan</div>
-        <p>Working entirely by hand, transforming reclaimed cotton waste into paper with a weight and texture no mill can replicate.</p>
+
+        <h4>
+          The Kantha Stitchers
+        </h4>
+
+        <div class="craft">
+          A Collective of Women Artisans
+        </div>
+
+        <p>
+          A collective of women artisans who learned the running stitch from their mothers, and now pass it forward, turning reclaimed cloth into something entirely new.
+        </p>
+
+      </div>
+
+
+      <!-- PAPERMAKERS -->
+
+      <div class="artist">
+
+        <div class="img-ph">
+
+          <div class="ph">
+            images/artist-paper.jpg
+          </div>
+
+        </div>
+
+        <h4>
+          The Papermakers
+        </h4>
+
+        <div class="craft">
+          Jaipur, Rajasthan
+        </div>
+
+        <p>
+          Working entirely by hand, transforming reclaimed cotton waste into paper with a weight and texture no mill can replicate.
+        </p>
+
       </div>
 
     </div>
+
   </div>
+
 </section>
 
+
 <!-- B2B -->
+
 <section class="b2b" id="b2b">
+
   <div class="container b2b-grid reveal">
 
     <div>
-      <span class="label">Trade &amp; Collaboration</span>
-      <h2>Let's chat. If you have a design in mind, let's create it together.</h2>
-      <p>Daffodil Studio partners with boutiques, institutions, and design-led companies seeking sourcing with real provenance, from curated ready collections to fully custom, design-your-own commissions.</p>
-      <p>Tell us what you're building, and we'll bring Jaipur's ateliers to the table.</p>
+
+      <span class="label">
+        Trade &amp; Collaboration
+      </span>
+
+      <h2>
+        Let's chat. If you have a design in mind, let's create it together.
+      </h2>
+
+      <p>
+        Daffodil Studio partners with boutiques, institutions, and design-led companies seeking sourcing with real provenance, from curated ready collections to fully custom, design-your-own commissions.
+      </p>
+
+      <p>
+        Tell us what you're building, and we'll bring Jaipur's ateliers to the table.
+      </p>
+
     </div>
+
 
     <form id="b2b-form">
 
       <div class="form-row">
-        <div>
-          <label for="name">Full Name</label>
-          <input type="text" id="name" required>
-        </div>
 
         <div>
-          <label for="company">Company / Institution</label>
-          <input type="text" id="company">
+
+          <label for="name">
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            id="name"
+            required
+          >
+
         </div>
+
+
+        <div>
+
+          <label for="company">
+            Company / Institution
+          </label>
+
+          <input
+            type="text"
+            id="company"
+          >
+
+        </div>
+
       </div>
+
 
       <div class="form-row">
-        <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" required>
-        </div>
 
         <div>
-          <label for="inquiry">Inquiry Type</label>
-          <select id="inquiry">
-            <option>Curated Collection Order</option>
-            <option>Custom Design Collaboration</option>
-            <option>Bulk Sourcing Inquiry</option>
-            <option>Press / Partnership</option>
-          </select>
+
+          <label for="email">
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            required
+          >
+
         </div>
+
+
+        <div>
+
+          <label for="inquiry">
+            Inquiry Type
+          </label>
+
+          <select id="inquiry">
+
+            <option>
+              Curated Collection Order
+            </option>
+
+            <option>
+              Custom Design Collaboration
+            </option>
+
+            <option>
+              Bulk Sourcing Inquiry
+            </option>
+
+            <option>
+              Press / Partnership
+            </option>
+
+          </select>
+
+        </div>
+
       </div>
+
 
       <div>
-        <label for="message">Tell us about your project</label>
+
+        <label for="message">
+          Tell us about your project
+        </label>
+
         <textarea id="message"></textarea>
+
       </div>
 
-      <button type="submit" class="submit-btn">Send Inquiry</button>
 
-      <div class="form-success" id="form-success">
+      <button
+        type="submit"
+        class="submit-btn"
+      >
+        Send Inquiry
+      </button>
+
+
+      <div
+        class="form-success"
+        id="form-success"
+      >
         Thank you — your inquiry has been received. We'll be in touch soon.
       </div>
 
     </form>
+
   </div>
+
 </section>
 
+
 <footer>
-  <div class="made">Handcrafted in Jaipur, India</div>
+
+  <div class="made">
+    Handcrafted in Jaipur, India
+  </div>
+
 </footer>
 
+
 <script>
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
 
-  const tabBtns = document.querySelectorAll('.world-nav button');
-  const panels = document.querySelectorAll('.world-panel');
+/* =========================================================
+   IMAGE LOADER
+   =========================================================
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
-    });
+   Your original code had many image filenames written like:
+
+   <div class="ph">images/notebooks-var1.jpg</div>
+
+   That displays the filename as text instead of loading it.
+
+   This script automatically converts every .ph containing an
+   "images/..." path into a real <img>.
+
+   It does NOT change your design or layout.
+   ========================================================= */
+
+document.querySelectorAll('.ph').forEach(function(placeholder) {
+
+  const imagePath = placeholder.textContent.trim();
+
+  if (imagePath.startsWith('images/')) {
+
+    const img = document.createElement('img');
+
+    img.src = './' + imagePath;
+
+    img.alt = '';
+
+    img.loading = 'lazy';
+
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+    img.style.display = 'block';
+
+    /*
+      If an image cannot be found, keep the placeholder
+      instead of showing a broken-image icon.
+    */
+
+    img.onerror = function() {
+
+      img.style.display = 'none';
+
+      placeholder.style.display = 'flex';
+
+      placeholder.textContent =
+        'Image not found: ' + imagePath;
+
+    };
+
+    /*
+      When image loads successfully, remove the old
+      placeholder completely.
+    */
+
+    img.onload = function() {
+      placeholder.remove();
+    };
+
+    placeholder.parentNode.appendChild(img);
+
+  }
+
+});
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+const nav = document.getElementById('nav');
+
+window.addEventListener('scroll', () => {
+
+  nav.classList.toggle(
+    'scrolled',
+    window.scrollY > 40
+  );
+
+});
+
+
+/* =========================================================
+   DUAL WORLDS TABS
+   ========================================================= */
+
+const tabBtns =
+  document.querySelectorAll('.world-nav button');
+
+const panels =
+  document.querySelectorAll('.world-panel');
+
+tabBtns.forEach(btn => {
+
+  btn.addEventListener('click', () => {
+
+    tabBtns.forEach(b =>
+      b.classList.remove('active')
+    );
+
+    panels.forEach(p =>
+      p.classList.remove('active')
+    );
+
+    btn.classList.add('active');
+
+    document
+      .getElementById(
+        'panel-' + btn.dataset.tab
+      )
+      .classList.add('active');
+
   });
 
-  document.getElementById('b2b-form').addEventListener('submit', function(e){
+});
+
+
+/* =========================================================
+   B2B FORM
+   ========================================================= */
+
+document
+  .getElementById('b2b-form')
+  .addEventListener('submit', function(e) {
+
     e.preventDefault();
-    document.getElementById('form-success').style.display = 'block';
+
+    document
+      .getElementById('form-success')
+      .style.display = 'block';
+
     this.reset();
+
   });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in'); });
-  }, { threshold: 0.12 });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+const observer =
+  new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add('in');
+
+      }
+
+    });
+
+  }, {
+    threshold:0.12
+  });
+
+
+document
+  .querySelectorAll('.reveal')
+  .forEach(el => {
+
+    observer.observe(el);
+
+  });
+
 </script>
 
 </body>
 </html>
-```
