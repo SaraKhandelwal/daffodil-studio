@@ -2193,21 +2193,49 @@ tabBtns.forEach(btn => {
 /* =========================================================
    B2B FORM
    ========================================================= */
+<form name="b2b-inquiry" method="POST" data-netlify="true" id="b2b-form">
+  <input type="hidden" name="form-name" value="b2b-inquiry">
 
-document
-  .getElementById('b2b-form')
-  .addEventListener('submit', function(e) {
+  <div class="form-row">
+    <div>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+    </div>
 
-    e.preventDefault();
+    <div>
+      <label for="company">Company / Institution</label>
+      <input type="text" id="company" name="company">
+    </div>
+  </div>
 
-    document
-      .getElementById('form-success')
-      .style.display = 'block';
+  <div class="form-row">
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
 
-    this.reset();
+    <div>
+      <label for="inquiry">Inquiry Type</label>
+      <select id="inquiry" name="inquiry">
+        <option>Curated Collection Order</option>
+        <option>Custom Design Collaboration</option>
+        <option>Bulk Sourcing Inquiry</option>
+        <option>Press / Partnership</option>
+      </select>
+    </div>
+  </div>
 
-  });
+  <div>
+    <label for="message">Tell us about your project</label>
+    <textarea id="message" name="message"></textarea>
+  </div>
 
+  <button type="submit" class="submit-btn">Send Inquiry</button>
+
+  <div class="form-success" id="form-success">
+    Thank you — your inquiry has been received. We'll be in touch soon.
+  </div>
+</form>
 
 /* =========================================================
    SCROLL REVEAL
