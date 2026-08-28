@@ -2194,22 +2194,21 @@ tabBtns.forEach(btn => {
    B2B FORM
    ========================================================= */
 
-const form = document.getElementById('b2b-form');
-const successMessage = document.getElementById('form-success');
+document
+  .getElementById('b2b-form')
+  .addEventListener('submit', function(e) {
 
-if (form) {
-  form.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-    // Netlify handles the submission.
-    // We only show the success message after submission begins.
-    setTimeout(function() {
-      if (successMessage) {
-        successMessage.style.display = 'block';
-      }
-    }, 300);
+    document
+      .getElementById('form-success')
+      .style.display = 'block';
+
+    this.reset();
 
   });
-}
+
+
 /* =========================================================
    SCROLL REVEAL
    ========================================================= */
