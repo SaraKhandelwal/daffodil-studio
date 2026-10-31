@@ -203,6 +203,8 @@
     font-family:'Jost', sans-serif; font-size:0.6rem; letter-spacing:0.1em; color:var(--espresso-soft);
     opacity:0.6; display:block; margin-top:0.35rem;
   }
+  .journal-wide{ margin-bottom:3rem; }
+  .journal-wide .img-ph{ aspect-ratio:16/9; background:var(--bone-warm); position:relative; margin-bottom:1.2rem; overflow:hidden; }
   .see-all{ text-align:center; margin-top:1rem; }
   .see-all p{ font-style:italic; color:var(--espresso-soft); }
   .see-all a{ color:var(--clay); border-bottom:1px solid var(--clay); padding-bottom:1px; transition:opacity .3s; }
@@ -418,19 +420,22 @@
 
       <div class="obj-note">The new collection · Recycled textile cover · A5 · 100 pages · each journal keeps 130 g of textile waste out of landfill</div>
 
-      <div class="journal-wide">
-        <div class="img-ph"><div class="ph">images/journal-texture-01.jpg</div></div>
-        <div class="obj-cap">
-          <span class="name">Texture 01</span>
-          <span class="code">DS · ST · 101</span>
+      <div class="obj-grid four">
+        <div class="obj">
+          <div class="img-ph"><div class="ph">images/journal-texture-01.jpg</div></div>
+          <div class="obj-cap"><span class="name">Texture 01</span><span class="code">DS · ST · 101</span></div>
         </div>
-      </div>
-
-      <div class="journal-wide">
-        <div class="img-ph"><div class="ph">images/journal-textures-03-05.jpg</div></div>
-        <div class="obj-cap">
-          <span class="name">Textures 03, 04 &amp; 05</span>
-          <span class="code">DS · ST · 103 · 104 · 105</span>
+        <div class="obj">
+          <div class="img-ph"><div class="ph">images/journal-texture-03.jpg</div></div>
+          <div class="obj-cap"><span class="name">Texture 03</span><span class="code">DS · ST · 103</span></div>
+        </div>
+        <div class="obj">
+          <div class="img-ph"><div class="ph">images/journal-texture-04.jpg</div></div>
+          <div class="obj-cap"><span class="name">Texture 04</span><span class="code">DS · ST · 104</span></div>
+        </div>
+        <div class="obj">
+          <div class="img-ph"><div class="ph">images/journal-texture-05.jpg</div></div>
+          <div class="obj-cap"><span class="name">Texture 05</span><span class="code">DS · ST · 105</span></div>
         </div>
       </div>
 
@@ -695,35 +700,35 @@
 
 <script>
 
-/* IMAGE LOADER: turns .ph "images/..." text into real images */
+/* IMAGE LOADER: turns .ph "images/..." text into real images (tries common extensions) */
 document.querySelectorAll('.ph').forEach(function(placeholder) {
 
   const imagePath = placeholder.textContent.trim();
+  if (!imagePath.startsWith('images/')) return;
 
-  if (imagePath.startsWith('images/')) {
+  const base = imagePath.replace(/\.[^.\/]+$/, '');
+  const exts = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG'];
+  let i = 0;
 
-    const img = document.createElement('img');
-    img.src = './' + imagePath;
-    img.alt = '';
-    img.loading = 'lazy';
-    img.style.width = '100%';
-    img.style.height = '100%';
-    img.style.objectFit = 'cover';
-    img.style.display = 'block';
+  const img = document.createElement('img');
+  img.alt = '';
+  img.loading = 'lazy';
+  img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
 
-    img.onerror = function() {
+  function tryNext() {
+    if (i >= exts.length) {
       img.style.display = 'none';
-      placeholder.style.display = 'flex';
       placeholder.textContent = 'Image not found: ' + imagePath;
-    };
-
-    img.onload = function() {
-      placeholder.remove();
-    };
-
-    placeholder.parentNode.appendChild(img);
-
+      return;
+    }
+    img.src = './' + base + '.' + exts[i++];
   }
+
+  img.onerror = tryNext;
+  img.onload = function() { placeholder.remove(); };
+
+  placeholder.parentNode.appendChild(img);
+  tryNext();
 
 });
 
